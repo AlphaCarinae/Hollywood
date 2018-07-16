@@ -1,0 +1,17 @@
+<h1>Directors#show</h1>
+
+<h2><%= @director.name %></h2>
+<% if @director.image.present? %>
+<%= image_tag @director.image%>
+<% end %>
+
+<ul>
+  <li>Born : <%= @director.yob %></li>
+  <li>Directed :
+    <% @director.movies.each do |movie| %>
+    <%= "#{movie.title}, "  %>
+    <% end %>
+  </li>
+</ul>
+
+<%= link_to "Edit details", edit_director_path(@director) %>

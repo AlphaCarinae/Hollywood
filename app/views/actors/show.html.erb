@@ -1,0 +1,17 @@
+<h1>Actors#show</h1>
+
+<h2><%= @actor.name %></h2>
+<% if @actor.image.present? %>
+<%= image_tag @actor.image%>
+<% end %>
+
+<ul>
+  <li>Born : <%= @actor.yob %></li>
+  <li>Played in:
+    <% @actor.movies.each do |movie| %>
+    <%= "#{movie.title}, "  %>
+    <% end %>
+  </li>
+</ul>
+
+<%= link_to "Edit details", edit_actor_path(@actor) %>

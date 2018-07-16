@@ -1,0 +1,12 @@
+<%= form_for @actor do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :image %>
+  <%= f.text_field :image %>
+
+  <%= f.label :Born %>
+  <%= f.number_field :yob %>
+
+  <%= f.submit %>
+<% end %>

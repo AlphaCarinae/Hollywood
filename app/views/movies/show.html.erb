@@ -1,0 +1,19 @@
+<h1>Movies#show</h1>
+
+<h2><%= @movie.title %></h2>
+<% if @movie.image.present? %>
+<%= image_tag @movie.image%>
+<% end %>
+
+<ul>
+  <li>Released : <%= @movie.year %></li>
+  <li>Director: <%= @movie.director.name %></li>
+  <li>Plot summary: <%= @movie.plot %></li>
+  <li>Starring :
+    <% @movie.actors.each do |actor| %>
+      <%= "#{actor.name}, " %>
+    <% end %>
+  </li>
+</ul>
+
+<%= link_to "Edit details", edit_movie_path(@movie) %>

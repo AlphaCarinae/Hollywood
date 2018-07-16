@@ -1,0 +1,8 @@
+<h1>Directors#index</h1>
+
+
+<ul>
+<% @directors.each do |director| %>
+  <li><%= link_to director.name, director %></li>
+<% end %>
+</ul>

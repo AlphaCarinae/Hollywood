@@ -1,0 +1,8 @@
+<h1>Lists#index</h1>
+
+
+<ul>
+<% @lists.each do |list| %>
+  <li><%= link_to list.name, list %></li>
+<% end %>
+</ul>
