@@ -1,0 +1,11 @@
+
+<%= form_for @user do |f| %>
+
+<%= f.label 'admin', 'Admin' %>
+<%= f.select :admin, [['True', true], ['False', false]] %>
+<%= f.label  "moderator", "Moderator" %>
+<%= f.select :moderator, [['True', true], ['False', false]] %>
+
+
+<%= f.submit %>
+<% end %>

@@ -1,9 +1,5 @@
-<h1>Users#edit</h1>
+<h1><%= @user.email %></h1>
 
 
 
-<%= @user.email %> :
-  <%= form_for @user do |f| %>
-  <%= check_box_tag "admin", "#{@user.admin}" %>
-  <%= check_box_tag "moderator", "#{@user.moderator}" %>
-<%= end %>
+<%= render :partial => 'entry' %>

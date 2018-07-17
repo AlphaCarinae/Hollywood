@@ -20,6 +20,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find params[:id]
+    @user.update user_params
+    redirect_to users_path
+  end
+
   def new
     @user = User.new
   end
@@ -27,6 +33,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :admin, :moderator)
   end
 end

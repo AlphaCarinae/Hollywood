@@ -1,0 +1,15 @@
+<% @tmdb_results.each do |entry| %>
+
+
+<% image_url = "http://image.tmdb.org/t/p/w154" + entry["poster_path"] %>
+<%= image_tag image_url %>
+<h3><%= entry["title"] %></h3>
+<p><%= entry["overview"] %></p>
+<p><%= entry["release_date"] %></p>
+
+<%= form_tag ("/fetch/movies", method: "post") do%>
+<%= submit_tag("Add to database") %>
+
+<% end %>
+
+<% end %>

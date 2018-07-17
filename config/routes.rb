@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   root :to => 'pages#home'
 
+  post '/search/movies' => 'movies#search'
+  post '/fetch/movies' => 'movies#fetch'
+
+
   resources :actors
   resources :movies
   resources :directors
