@@ -16,6 +16,12 @@ class MoviesController < ApplicationController
     @movie = Movie.new
   end
 
+  def destroy
+    movie = Movie.find params[:id]
+    movie.destroy
+    redirect_to movies_path
+  end
+
   def create
     movie = Movie.create movie_params
     redirect_to movie
@@ -44,8 +50,8 @@ def fetch
   credits_url = "#{BASE_MOVIE_URL}#{movie_id}/credits?api_key=#{API_KEY}&language=en-US"
   tmdb_response_credits = HTTParty.get credits_url
 
-# do we need to add the director for this movie
-#or use an exisiting one
+# Directors!! do we need to add the director for this movie
+# or use an exisiting one
   director_id = tmdb_response_credits["crew"].first["id"]
   director_name = tmdb_response_credits["crew"].first["name"]
   local_director = Director.where(name: director_name)
@@ -62,7 +68,7 @@ def fetch
     local_director_id = director.id
 
   end
-
+##Let's create the movie entry now
   movie = Movie.new
   movie.title = tmdb_response_movie["title"]
   movie.image = "#{BASE_IMAGE_URL}w300" + tmdb_response_movie["poster_path"]
@@ -70,6 +76,26 @@ def fetch
   movie.plot = tmdb_response_movie["overview"]
   movie.director_id = local_director_id
   movie.save
+  new_movie_id = movie.id
+
+# Let's create the actors and connect to the new movie
+  tmdb_response_credits["cast"][0,9].each do |cast|
+    actor_id = cast["id"]
+    actor_name = cast["name"]
+    local_actor = Actor.where(name: actor_name)
+    if local_actor.present?
+      movie.actors << local_actor
+    else
+      actor_url = "#{BASE_PERSON_URL}#{actor_id}?api_key=#{API_KEY}&language=en-US"
+      tmdb_response_actor = HTTParty.get actor_url
+      actor = Actor.new
+      actor.name = tmdb_response_actor["name"]
+      actor.yob = tmdb_response_actor["birthday"][0,4] if tmdb_response_actor["birthday"].present?
+      actor.image = "#{BASE_IMAGE_URL}w300" + tmdb_response_actor["profile_path"] if tmdb_response_actor["profile_path"].present?
+      actor.save
+      movie.actors << actor
+    end
+  end
 
   redirect_to movie
 end

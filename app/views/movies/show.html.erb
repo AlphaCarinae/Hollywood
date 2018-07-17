@@ -23,3 +23,6 @@
 </ul>
 
 <%= link_to "Edit details", edit_movie_path(@movie) %>
+
+<%= button_to "delete", {:controller => :movies,
+      :action => 'destroy', :id => @movie.id }, :method => :delete %>

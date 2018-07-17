@@ -1,7 +1,11 @@
 <% @tmdb_results.each do |entry| %>
 
-  <% image_url = "http://image.tmdb.org/t/p/" + "w154" + entry["poster_path"] %>
-  <%= image_tag image_url %>
+  <% if entry["poster_path"].present? %>
+    <% image_url = "http://image.tmdb.org/t/p/" + "w154" + entry["poster_path"] %>
+    <%= image_tag image_url %>
+  <% end %>
+
+
   <h3><%= entry["title"] %></h3>
   <p>Plot : <%= entry["overview"] %></p>
   <p>Released : <%= entry["release_date"] %></p>
