@@ -7,13 +7,19 @@
 
 <ul>
   <li>Released : <%= @movie.year %></li>
-  <li>Director: <%= @movie.director.name %></li>
+  <li>
+    <% if @movie.director.present? %>
+    Director: <%= @movie.director.name %>
+    <% end %>
+  </li>
   <li>Plot summary: <%= @movie.plot %></li>
+  <% if @movie.actors.present? %>
   <li>Starring :
     <% @movie.actors.each do |actor| %>
       <%= "#{actor.name}, " %>
     <% end %>
   </li>
+  <% end %>
 </ul>
 
 <%= link_to "Edit details", edit_movie_path(@movie) %>
