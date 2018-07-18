@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+ nav {
+   background-color: #f5c023;
+   font-family: 'Bangers', cursive;
+ }
+
+ nav a {
+   color: black;
+ }
+
+.centered-form {
+  text-align: center;
+  padding: 1vw;
+
+}

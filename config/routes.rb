@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   post '/search/movies' => 'movies#search'
   post '/fetch/movies' => 'movies#fetch'
+  post '/addtolist/movies' => 'movies#addlist'
 
 
   resources :actors

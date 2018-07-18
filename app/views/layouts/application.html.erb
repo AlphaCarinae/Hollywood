@@ -10,16 +10,25 @@
   </head>
 
   <body>
-    <nav>
-      <a href="/">Home</a>
+    <nav class="navbar navbar-fixed-top">
+      <div class="">
+      <a href="/" class="navbar-brand">Hollywood</a>
+      <a href="/actors" class=" ">Actors</a>
+      <a href="/directors" class=" ">Directors</a>
+      <a href="/movies" class=" ">Movies</a>
+      <a href="/lists" class=" ">Lists</a>
+
+      <a href="/users" class=" ">Users</a>
+      </div>
+      <div class="">
       <% if @current_user.present? %>
         <!-- <%= link_to 'Email addresses', users_path if @current_user.admin? %> -->
-        <%= link_to "Sign out #{ @current_user.email }", login_path, :method => 'delete' %>
+        <%= link_to "Sign out #{ @current_user.email }", login_path, :method => 'delete', :class => "btn btn-sm btn-danger active" %>
       <% else %>
-        <%= link_to 'Sign up', new_user_path %>
-        <%= link_to 'Sign in', login_path %>
+        <%= link_to 'Sign up', new_user_path, :class => "btn btn-sm btn-primary active" %>
+        <%= link_to 'Sign in', login_path, :class => "btn btn-sm btn-success active" %>
       <% end %>
-
+      </div>
     </nav>
     <%= yield %>
   </body>

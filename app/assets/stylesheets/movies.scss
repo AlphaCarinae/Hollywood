@@ -1,3 +1,29 @@
 // Place all the styles related to the Movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+
+
+.container {
+
+    font-size: 2vw;
+    padding: 2vw;
+
+  img {
+    max-width: 100%;
+  }
+
+  h2 {
+    font-size: 4vw;
+  }
+}
+
+.movie-card {
+  background-color: #dfdaaf;
+  font-size: 2vw;
+  padding: 2vw;
+
+  h3 {
+    font-size: 4vw;
+  }
+}

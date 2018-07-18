@@ -1,28 +1,60 @@
-<h1>Movies#show</h1>
+<div class="container">
 
-<h2><%= @movie.title %></h2>
-<% if @movie.image.present? %>
-<%= image_tag @movie.image%>
-<% end %>
+  <div class="row flex">
+    <div class="col-7">
 
-<ul>
-  <li>Released : <%= @movie.year %></li>
-  <li>
-    <% if @movie.director.present? %>
-    Director: <%= @movie.director.name %>
+      <h2 ><%= @movie.title %></h2>
+      <ul>
+        <li>
+          <em>Released :
+          </em><%= @movie.year %></li>
+        <li>
+          <% if @movie.director.present? %>
+            <em>Director:</em>
+            <%= @movie.director.name %>
+          <% end %>
+        </li>
+        <li>
+          <em>Plot summary:</em>
+          <%= @movie.plot %></li>
+        <% if @movie.actors.present? %>
+          <li>
+            <em>Starring :</em>
+            <% @movie.actors.each do |actor| %>
+              <%= "#{actor.name}, " %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+      <% if @current_user.present? %>
+
+        <%= form_tag '/addtolist/movies' do %>
+        <label>Add Movie to the list :
+        </label>
+        <select name="list_id">
+          <option value=""></option>
+          <% @current_user.lists.each do |list| %>
+            <option value="<%= list.id %>"><%= list.name %></option>
+          <% end %>
+        </select>
+        <%= hidden_field_tag 'movie_id', @movie.id %>
+        <%= submit_tag "add" %>
+      <% end %>
+
+      <% if @current_user.moderator == true %>
+        <%= link_to "Edit details", edit_movie_path(@movie) %>
+
+        <%= button_to "delete", {:controller => :movies, :action => 'destroy', :id => @movie.id }, :method => :delete %>
+      <% end %>
+
     <% end %>
-  </li>
-  <li>Plot summary: <%= @movie.plot %></li>
-  <% if @movie.actors.present? %>
-  <li>Starring :
-    <% @movie.actors.each do |actor| %>
-      <%= "#{actor.name}, " %>
+  </div>
+  <div class="col-4">
+    <% if @movie.image.present? %>
+      <%= image_tag @movie.image%>
     <% end %>
-  </li>
-  <% end %>
-</ul>
+  </div>
+</div>
 
-<%= link_to "Edit details", edit_movie_path(@movie) %>
-
-<%= button_to "delete", {:controller => :movies,
-      :action => 'destroy', :id => @movie.id }, :method => :delete %>
+</div>

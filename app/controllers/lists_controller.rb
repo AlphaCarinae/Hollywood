@@ -17,6 +17,7 @@ class ListsController < ApplicationController
 
     def create
       list = List.create list_params
+      @current_user.lists << list
       redirect_to list
     end
 
@@ -26,7 +27,9 @@ class ListsController < ApplicationController
       redirect_to list
     end
 
-
+def removeitem
+  raise 'hell'
+end
 
 
     private

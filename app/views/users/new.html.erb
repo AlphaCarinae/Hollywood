@@ -1,22 +1,30 @@
-<h1>Sign Up</h1>
+<div class="container  d-flex flex-row justify-content-center">
+  <div class="card col-7 centered-form">
+    <h3>Sign Up</h3>
 
-<% if @user.errors.any? %>
-  <ol>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+    <% if @user.errors.any? %>
+    <ol>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ol>
     <% end %>
-  </ol>
-<% end %>
 
-<%= form_for @user do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+    <%= form_for @user do |f| %>
+      <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+      </div>
+      <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+      </div>
+      <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+      </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit "Sign up!" %>
-<% end %>
+    <%= f.submit "Get started!", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

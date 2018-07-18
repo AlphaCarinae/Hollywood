@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+before_action :check_for_admin, :only => [:index, :destroy, :edit, :update]
 
   def index
     @users = User.all
@@ -12,6 +12,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new user_params
+    @user.admin = false
+    @user.moderator = false
     if @user.save
       session[:user_id] = @user.id
       redirect_to root_path
@@ -28,6 +30,12 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+  end
+
+  def destroy
+    user = User.find params[:id]
+    user.destroy
+    redirect_to users_path
   end
 
 

@@ -1,8 +1,18 @@
-<h1>Lists#index</h1>
 
 
-<ul>
-<% @lists.each do |list| %>
-  <li><%= link_to list.name, list %></li>
+<% if @current_user.present? %>
+<h2>My lists</h2>
+  <h3>Your Movie lists</h3>
+  <ul>
+    <% @current_user.lists.each do |list| %>
+      <li>
+        <%= link_to list.name, list_path(list.id) %>
+      </li>
+    <% end %>
+    <li>
+      <%= link_to "Add a new list", new_list_path %>
+    </li>
+  </ul>
+  <% else %>
+  <p>You have to sign in to view your lists</p>
 <% end %>
-</ul>

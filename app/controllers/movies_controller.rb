@@ -33,6 +33,14 @@ class MoviesController < ApplicationController
     redirect_to movie
   end
 
+  def addlist
+
+    movie = Movie.find params[:movie_id]
+    list = List.find params[:list_id]
+    movie.lists << list
+    redirect_to list
+  end
+
 def search
   query_string = params[:query]
   movie_url = "https://api.themoviedb.org/3/search/movie?api_key=#{API_KEY}&language=en-US&query=#{query_string}&page=1&include_adult=false"
