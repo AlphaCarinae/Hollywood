@@ -1,8 +1,17 @@
-<h1>Directors#index</h1>
 
 
-<ul>
+
+<hr>
+<div class="container">
+  <div class="d-flex flex-wrap justify-content-between">
 <% @directors.each do |director| %>
-  <li><%= link_to director.name, director %></li>
+  <div class="card bg-light mt-3 mr-2 movie-card">
+    <% if director.image.present? %>
+      <%= link_to image_tag(director.image, class: "card-img-top"), director %>
+    <% end %>
+    <h6 class="card-text"><%= director.name %></h6>
+  </div>
 <% end %>
-</ul>
+
+  </div>
+</div>

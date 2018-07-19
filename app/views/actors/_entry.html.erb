@@ -1,12 +1,22 @@
+<div class="container  d-flex flex-row justify-content-center">
+  <div class="card col-8 centered-form">
+
 <%= form_for @actor do |f| %>
+<div class="form-group">
   <%= f.label :name %>
   <%= f.text_field :name %>
-
+</div>
+<div class="form-group">
   <%= f.label :image %>
   <%= f.text_field :image %>
-
+</div>
+<div class="form-group">
   <%= f.label :Born %>
   <%= f.number_field :yob %>
-
-  <%= f.submit %>
+</div>
+  <%= f.submit 'Update', :class => "btn btn-outline-dark" %>
 <% end %>
+
+
+</div>
+</div>

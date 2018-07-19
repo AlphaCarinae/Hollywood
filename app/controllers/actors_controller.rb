@@ -26,6 +26,13 @@ class ActorsController < ApplicationController
     redirect_to actor
   end
 
+  def addlist
+
+    actor = Actor.find params[:actor_id]
+    list = List.find params[:list_id]
+    actor.lists << list
+    redirect_to list
+  end
 
 
 

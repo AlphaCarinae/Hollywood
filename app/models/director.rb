@@ -14,5 +14,5 @@ class Director < ApplicationRecord
   has_many  :movies
 
   has_many :categories, :as => :member
-  has_many :lists, :through => :category
+  has_many :lists, :through => :categories
 end

@@ -11,25 +11,28 @@
 
   <body>
     <nav class="navbar navbar-fixed-top">
-      <div class="">
-      <a href="/" class="navbar-brand">Hollywood</a>
-      <a href="/actors" class=" ">Actors</a>
-      <a href="/directors" class=" ">Directors</a>
-      <a href="/movies" class=" ">Movies</a>
-      <a href="/lists" class=" ">Lists</a>
-
-      <a href="/users" class=" ">Users</a>
-      </div>
-      <div class="">
+    <div class="d-flex justify-content-left">
+      <a class="nav-link nav-item " href="/" class="navbar-brand" id="navBrand">Hollywood</a>
+      <a class="nav-link nav-item nav-link-font" href="/actors" >Actors</a>
+      <a class="nav-link nav-item nav-link-font" href="/directors" >Directors</a>
+      <a class="nav-link nav-item nav-link-font" href="/movies" >Movies</a>
+      <a class="nav-link nav-item nav-link-font" href="/lists" >Collections</a>
+      <a class="nav-link nav-item nav-link-font" href="/users" >Users</a>
+    </div>
+    <div class="">
       <% if @current_user.present? %>
         <!-- <%= link_to 'Email addresses', users_path if @current_user.admin? %> -->
-        <%= link_to "Sign out #{ @current_user.email }", login_path, :method => 'delete', :class => "btn btn-sm btn-danger active" %>
+        <%= link_to "Sign out #{ @current_user.email }", login_path, :method => 'delete', :class => "btn btn-sm btn-danger active nav-button-font" %>
       <% else %>
-        <%= link_to 'Sign up', new_user_path, :class => "btn btn-sm btn-primary active" %>
-        <%= link_to 'Sign in', login_path, :class => "btn btn-sm btn-success active" %>
+        <%= link_to 'Sign up', new_user_path, :class => "btn btn-sm btn-primary active nav-button-font" %>
+        <%= link_to 'Sign in', login_path, :class => "btn btn-sm btn-success active nav-button-font" %>
       <% end %>
       </div>
     </nav>
     <%= yield %>
+
+    <footer class="footer">
+      <p>The data on <i>Ⓒ Hollywood</i> has been provided by <a href="https://www.themoviedb.org/">TMDB</a>  </p> 
+    </footer>
   </body>
 </html>

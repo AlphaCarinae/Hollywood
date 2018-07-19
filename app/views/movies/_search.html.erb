@@ -1,5 +1,5 @@
-<%= form_tag("/search/movies", method: "post") do %>
-  <%= label_tag(:query, "Search for:") %>
-  <%= text_field_tag(:query) %>
-  <%= submit_tag("Go") %>
+<%= form_tag("/search/movies", method: "post", class: "form-control") do %>
+  <%= label_tag('query', "  Search :" ) %>
+  <%= text_field_tag 'query' %>
+  <%= submit_tag("Go", class: "btn btn-sm btn-info") %>
 <% end %>

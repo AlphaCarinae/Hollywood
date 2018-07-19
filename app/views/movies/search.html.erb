@@ -1,33 +1,29 @@
-
-<div class="d-flex flex-row flex-wrap">
+<div class="container">
+<div class="d-flex flex-row flex-wrap justify-content-between">
 
 <% @tmdb_results.each do |entry| %>
 
-  <div class="col3 movie-card">
+  <div class=" card bg-light mt-3 mr-2 movie-card">
 
     <% if entry["poster_path"].present? %>
       <% image_url = "http://image.tmdb.org/t/p/" + "w154" + entry["poster_path"] %>
-      <%= image_tag image_url %>
+      <%= image_tag image_url, :class => "card-img-top" %>
     <% end %>
 
-    <div class="">
-      <h3 class=""><%= entry["title"] %></h3>
-      <p class="">Released : <%= entry["release_date"] %></p>
+    <div class="card-body">
+      <h5 class="card-title"><%= entry["title"] %></h5>
 
-                <% if false %>
-                <p class="">Plot : <%= entry["overview"] %></p>
-                <% end %>
 
-      <div class="">
-              <% db_movie = Movie.where(title:entry["title"]) %>
+      <div>
+      <% db_movie = Movie.where(title:entry["title"]) %>
       <% if db_movie.present? %>
-        <%= link_to "View Details", "/movies/#{db_movie.first[:id]}", class: "btn btn-primary" %>
+        <h6><%= link_to "View Details", "/movies/#{db_movie.first[:id]}", class: "card-link" %></h6>
 
       <% else %>
         <%= form_tag("/fetch/movies", method: "post") do%>
 
           <%= hidden_field_tag(:id, entry["id"]) %>
-          <%= submit_tag("Add to database", class: "btn ") %>
+          <%= submit_tag("Add to database", class: "btn btn-sm btn-info") %>
         <% end %>
 
       <% end %>
@@ -37,4 +33,5 @@
   </div>
 <% end %>
 
+</div>
 </div>

@@ -1,7 +1,14 @@
+<div class="container  d-flex flex-row justify-content-center">
+  <div class="card col-8 centered-form">
+
 <%= form_for @list do |f| %>
+<div class="form-group">
   <%= f.label :list %>
   <%= f.text_field :name %>
+</div>
 
-
-  <%= f.submit 'save'%>
+  <%= f.submit 'save', :class => "btn btn-outline-dark" %>
 <% end %>
+
+</div>
+</div>

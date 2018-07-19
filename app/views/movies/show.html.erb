@@ -1,27 +1,26 @@
 <div class="container">
 
-  <div class="row flex">
+  <div class="row flex justify-content-center">
     <div class="col-7">
 
       <h2 ><%= @movie.title %></h2>
       <ul>
         <li>
-          <em>Released :
-          </em><%= @movie.year %></li>
+          <b><em>Released :</em></b><%= @movie.year %></li>
         <li>
           <% if @movie.director.present? %>
-            <em>Director:</em>
-            <%= @movie.director.name %>
+            <b> <em>Director:</em></b>
+            <%= link_to @movie.director.name, director_path(@movie.director) %>
           <% end %>
         </li>
         <li>
-          <em>Plot summary:</em>
+          <b>  <em>Plot summary:</em></b>
           <%= @movie.plot %></li>
         <% if @movie.actors.present? %>
           <li>
-            <em>Starring :</em>
+          <b>  <em>Starring :</em> </b>
             <% @movie.actors.each do |actor| %>
-              <%= "#{actor.name}, " %>
+              <%= link_to "#{actor.name}, " , actor_path(actor) %>
             <% end %>
           </li>
         <% end %>
@@ -30,7 +29,7 @@
       <% if @current_user.present? %>
 
         <%= form_tag '/addtolist/movies' do %>
-        <label>Add Movie to the list :
+        <label>Add Movie to  :
         </label>
         <select name="list_id">
           <option value=""></option>
@@ -39,13 +38,13 @@
           <% end %>
         </select>
         <%= hidden_field_tag 'movie_id', @movie.id %>
-        <%= submit_tag "add" %>
+        <%= submit_tag "add", :class => "btn btn-outline-dark" %>
       <% end %>
 
       <% if @current_user.moderator == true %>
         <%= link_to "Edit details", edit_movie_path(@movie) %>
 
-        <%= button_to "delete", {:controller => :movies, :action => 'destroy', :id => @movie.id }, :method => :delete %>
+        <%= button_to "delete", {:controller => :movies, :action => 'destroy', :id => @movie.id }, :method => :delete, :class => "btn btn-outline-dark" %>
       <% end %>
 
     <% end %>

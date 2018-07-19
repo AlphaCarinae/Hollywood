@@ -27,7 +27,13 @@ class DirectorsController < ApplicationController
       redirect_to director
     end
 
+    def addlist
 
+      director = Director.find params[:director_id]
+      list = List.find params[:list_id]
+      director.lists << list
+      redirect_to list
+    end
 
 
     private

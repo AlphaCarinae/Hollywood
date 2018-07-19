@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   post '/search/movies' => 'movies#search'
   post '/fetch/movies' => 'movies#fetch'
   post '/addtolist/movies' => 'movies#addlist'
+  get '/removeitem/lists/:id' => 'lists#removeitem'
+  post '/addtolist/directors' => 'directors#addlist'
+  post '/addtolist/actors' => 'actors#addlist'
 
 
   resources :actors

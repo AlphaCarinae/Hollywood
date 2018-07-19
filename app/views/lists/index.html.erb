@@ -1,18 +1,20 @@
 
+<div class="container">
+  <% if @current_user.present? %>
+    <%= link_to "Add a new collection", new_list_path, class: "btn btn-sm button-primary" %>
+    <hr>
+    <h3>Your Collections</h3>
+    <ul>
+      <% @current_user.lists.each do |list| %>
+        <li>
+          <%= link_to list.name, list_path(list.id) %>
+        </li>
+      <% end %>
 
-<% if @current_user.present? %>
-<h2>My lists</h2>
-  <h3>Your Movie lists</h3>
-  <ul>
-    <% @current_user.lists.each do |list| %>
-      <li>
-        <%= link_to list.name, list_path(list.id) %>
-      </li>
-    <% end %>
-    <li>
-      <%= link_to "Add a new list", new_list_path %>
-    </li>
-  </ul>
-  <% else %>
-  <p>You have to sign in to view your lists</p>
-<% end %>
+
+
+    </ul>
+    <% else %>
+    <p>You have to sign in to view your collections</p>
+  <% end %>
+</div>

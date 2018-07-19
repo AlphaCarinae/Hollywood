@@ -28,7 +28,20 @@ class ListsController < ApplicationController
     end
 
 def removeitem
-  raise 'hell'
+  category = Category.find params[:id]
+  list = category.list_id
+  category.destroy
+  redirect_to list_path(list)
+end
+
+def destroy
+  list = List.find params[:id]
+  list.categories.each do |category|
+    category.destroy
+
+  end
+  list.destroy
+  redirect_to lists_path
 end
 
 

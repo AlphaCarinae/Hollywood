@@ -1,17 +1,44 @@
-<h1>Actors#show</h1>
+<div class="container">
+  <div class="row flex justify-content-center">
+    <div class="col-6">
 
-<h2><%= @actor.name %></h2>
-<% if @actor.image.present? %>
-<%= image_tag @actor.image%>
-<% end %>
 
-<ul>
-  <li>Born : <%= @actor.yob %></li>
-  <li>Played in:
-    <% @actor.movies.each do |movie| %>
-    <%= "#{movie.title}, "  %>
+  <h2><%= @actor.name %></h2>
+    <ul>
+      <li>Born : <%= @actor.yob %></li>
+      <li>Played in:
+        <% @actor.movies.each do |movie| %>
+        <%= link_to "#{movie.title}, ", movie_path(movie)  %>
+        <% end %>
+      </li>
+    </ul>
+
+    <% if @current_user.present? %>
+
+        <%= form_tag '/addtolist/actors' do %>
+        <label>Add actor to the collection :</label>
+        <br>
+        <select name="list_id">
+          <option value=""></option>
+          <% @current_user.lists.each do |list| %>
+            <option value="<%= list.id %>"><%= list.name %></option>
+          <% end %>
+        </select>
+        <%= hidden_field_tag 'actor_id', @actor.id %>
+        <%= submit_tag "add", :class => "btn btn-outline-dark"  %>
+      <% end %>
+      <br>
+      <%= link_to "Edit details", edit_actor_path(@actor) %>
     <% end %>
-  </li>
-</ul>
+  </div>
+    <div class="col-3">
 
-<%= link_to "Edit details", edit_actor_path(@actor) %>
+      <% if @actor.image.present? %>
+      <%= image_tag @actor.image%>
+      <% end %>
+    </div>
+
+
+</div>
+
+</div>

@@ -1,14 +1,12 @@
 
-<% if @current_user.present? %>
-  <h3>Your Movie lists</h3>
-  <ul>
-    <% @current_user.lists.each do |list| %>
-      <li>
-        <%= link_to list.name, list_path(list.id) %>
-      </li>
-    <% end %>
-    <li>
-      <%= link_to "Add a new list", new_list_path %>
-    </li>
-  </ul>
-<% end %>
+<div class="container">
+<div class ="jumbotron">
+
+  <h1 class="display-4">Make Collections of all things Hollywood!</h1>
+  <p>Put any combination of Movies, Actors and Directors of Hollywood together in sets you can refer to. Get started by finding or adding your favorite movie to the database <a href="/movies">here</a>. or go and create a name for your first collection <a href="/lists">here</a>.</p>
+  <p class="lead">
+  <a class="btn btn-dark btn-lg" href="/movies" role="button">Find a movie</a>
+  <a class="btn btn-dark btn-lg" href="/lists" role="button">Name a Collection</a>
+</p>
+</div>
+</div>

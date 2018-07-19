@@ -1,15 +1,31 @@
+<div class="container">
+  <h2><%= @list.name %></h2>
 
-<h2><%= @list.name %></h2>
+  <ul>
+    <% @list.categories.each do |category| %>
 
-<ul>
-  <% @list.categories.each do |category| %>
-  <li>
-      <%= link_to "#{category.member.title}", "/movies/#{category.member.id}"  %>
-      <%= button_to "delete", {:controller => :lists, :action => 'removeitem', :id => @list.id, :movie_id => category.member.id }, :method => :delete %>
+    <%   if category.member_type == "Movie" %>
+        <li>
+            <%= link_to "Movie : #{category.member.title}", "/movies/#{category.member.id}"  %>
+            <%= link_to "remove", "/removeitem/lists/#{category.id}" %>
+        </li>
 
-  </li>
-  <% end %>
-</ul>
+    <% elsif category.member_type == "Director" %>
+        <li>
+            <%= link_to "Director : #{category.member.name}", "/directors/#{category.member.id}"  %>
+            <%= link_to "remove", "/removeitem/lists/#{category.id}" %>
+        </li>
+    <% elsif category.member_type == "Actor" %>
+        <li>
+            <%= link_to "Actor : #{category.member.name}", "/actors/#{category.member.id}"  %>
+            <%= link_to "remove", "/removeitem/lists/#{category.id}" %>
+        </li>
+      <% end %>
+    <% end %>
 
-<%= link_to "Edit details", edit_list_path(@list) %>
-<%= link_to "Delete List", edit_list_path(@list) %>
+  </ul>
+
+  <%= link_to "Edit name", edit_list_path(@list) %>
+  <br>
+  <%= link_to "Delete collection", list_path(@list), :method => 'delete' %>
+</div>

@@ -46,7 +46,7 @@ def search
   movie_url = "https://api.themoviedb.org/3/search/movie?api_key=#{API_KEY}&language=en-US&query=#{query_string}&page=1&include_adult=false"
   tmdb_response = HTTParty.get movie_url
   # raise 'hell'
-  @tmdb_results = tmdb_response["results"][0,5]
+  @tmdb_results = tmdb_response["results"][0,8]
 end
 
 def fetch

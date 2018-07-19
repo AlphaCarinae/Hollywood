@@ -1,17 +1,46 @@
-<h1>Directors#show</h1>
+<div class="container">
+  <div class="row flex justify-content-center">
+    <div class="col-6">
 
-<h2><%= @director.name %></h2>
-<% if @director.image.present? %>
-<%= image_tag @director.image%>
-<% end %>
+        <h2><%= @director.name %></h2>
 
-<ul>
-  <li>Born : <%= @director.yob %></li>
-  <li>Directed :
-    <% @director.movies.each do |movie| %>
-    <%= "#{movie.title}, "  %>
+        <ul>
+          <li>Born : <%= @director.yob %></li>
+          <li>Directed :
+            <% @director.movies.each do |movie| %>
+            <%= link_to "#{movie.title}, ", movie_path(movie)  %>
+            <% end %>
+          </li>
+    </ul>
+
+    <% if @current_user.present? %>
+
+        <%= form_tag '/addtolist/directors' do %>
+        <label>Add director to the collection :
+        </label>
+        <br>
+        <select name="list_id">
+          <option value=""></option>
+          <% @current_user.lists.each do |list| %>
+            <option value="<%= list.id %>"><%= list.name %></option>
+          <% end %>
+        </select>
+        <%= hidden_field_tag 'director_id', @director.id %>
+        <%= submit_tag "add", :class => "btn btn-outline-dark" %>
+      <% end %>
+      <br>
+      <%= link_to "Edit details", edit_director_path(@director) %>
     <% end %>
-  </li>
-</ul>
 
-<%= link_to "Edit details", edit_director_path(@director) %>
+
+    </div>
+    <div class="col-3">
+      <% if @director.image.present? %>
+      <%= image_tag @director.image%>
+      <% end %>
+    </div>
+
+
+</div>
+
+</div>

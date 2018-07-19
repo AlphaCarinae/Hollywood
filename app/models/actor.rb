@@ -13,4 +13,6 @@
 class Actor < ApplicationRecord
   has_and_belongs_to_many :movies
 
+  has_many :categories, :as => :member
+  has_many :lists, :through => :categories
 end
