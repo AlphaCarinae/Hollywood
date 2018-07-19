@@ -7,18 +7,18 @@
     <%   if category.member_type == "Movie" %>
         <li>
             <%= link_to "Movie : #{category.member.title}", "/movies/#{category.member.id}"  %>
-            <%= link_to "remove", "/removeitem/lists/#{category.id}" %>
+            <%= link_to "remove", "/removeitem/lists/#{category.id}", class: "btn btn-sm btn-light" %>
         </li>
 
     <% elsif category.member_type == "Director" %>
         <li>
             <%= link_to "Director : #{category.member.name}", "/directors/#{category.member.id}"  %>
-            <%= link_to "remove", "/removeitem/lists/#{category.id}" %>
+            <%= link_to "remove", "/removeitem/lists/#{category.id}", class: "btn btn-sm btn-light" %>
         </li>
     <% elsif category.member_type == "Actor" %>
         <li>
             <%= link_to "Actor : #{category.member.name}", "/actors/#{category.member.id}"  %>
-            <%= link_to "remove", "/removeitem/lists/#{category.id}" %>
+            <%= link_to "remove", "/removeitem/lists/#{category.id}", class: "btn btn-sm btn-light" %>
         </li>
       <% end %>
     <% end %>
