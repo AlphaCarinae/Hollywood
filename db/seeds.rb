@@ -34,7 +34,7 @@ List.destroy_all
 # l1 = List.create(name: "Good Movies")
 # l2 = List.create(name: "Great Movies")
 User.destroy_all
-User.create(email: "admin@hollywood.com", password_digest: "$2a$10$ueq2Qop0IG/vn0NcZYUOseZ0O/guXUfM8t0rdFFaO0NpONwCcqMm6", admin: true, moderator: true)
+# User.create(email: "admin@hollywood.com", password_digest: "$2a$10$ueq2Qop0IG/vn0NcZYUOseZ0O/guXUfM8t0rdFFaO0NpONwCcqMm6", admin: true, moderator: true)
 #association seeds
 
 # m1.actors << a1 << a2 << a3

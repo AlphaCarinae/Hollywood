@@ -1,5 +1,5 @@
 <div class="container d-flex flex-row justify-content-center">
-  <div class="card col-6">
+  <div class="col-6">
     <h3>Sign Up</h3>
 
     <% if @user.errors.any? %>
@@ -24,7 +24,7 @@
     <%= f.password_field :password_confirmation %>
       </div>
 
-    <%= f.submit "Get started!", class: "btn btn-primary" %>
+    <%= f.submit "Get started!", class: "btn btn-primary btn-sm" %>
     <% end %>
   </div>
 </div>

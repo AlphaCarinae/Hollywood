@@ -1,4 +1,6 @@
 <div class="container">
+  <div class="row flex justify-content-center">
+    <div class="col-5">
   <h2><%= @list.name %></h2>
 
   <ul>
@@ -21,11 +23,23 @@
             <%= link_to "remove", "/removeitem/lists/#{category.id}", class: "btn btn-sm btn-light" %>
         </li>
       <% end %>
+
+<% end %>
+<%= link_to "Edit name", edit_list_path(@list), class: "btn btn-sm btn-dark" %>
+
+<%= link_to "Delete collection", list_path(@list), :method => 'delete', class: "btn btn-sm btn-dark" %>
+  </div>
+  <div class="d-flex flex-wrap justify-content-around col-7">
+
+    <% @list.categories.each do |category| %>
+      <div class="movie-card">
+            <%= link_to image_tag(category.member.image, class: "card-img-top" ), "/movies/#{category.member.id}"  %>
+      </div>
     <% end %>
 
-  </ul>
 
-  <%= link_to "Edit name", edit_list_path(@list) %>
-  <br>
-  <%= link_to "Delete collection", list_path(@list), :method => 'delete' %>
+  </div>
+
+
+</div>
 </div>

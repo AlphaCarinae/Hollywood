@@ -13,10 +13,10 @@
     <% end %>
 
     <div class="card-body">
-      <h5 class="card-title"><%= entry["title"] %></h5>
+      <h6 class="card-title"><%= entry["title"] %></h6>
 
 
-      <div>
+      <div class="card-text">
       <% db_movie = Movie.where(title:entry["title"]) %>
       <% if db_movie.present? %>
         <h6><%= link_to "View Details", "/movies/#{db_movie.first[:id]}", class: "card-link" %></h6>
@@ -25,7 +25,7 @@
         <%= form_tag("/fetch/movies", method: "post") do%>
 
           <%= hidden_field_tag(:id, entry["id"]) %>
-          <%= submit_tag("Add to database", class: "btn btn-sm btn-info") %>
+          <%= submit_tag("Add to DB", class: "btn btn-sm btn-info") %>
         <% end %>
 
       <% end %>

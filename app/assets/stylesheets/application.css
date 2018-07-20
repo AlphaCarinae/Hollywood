@@ -21,10 +21,16 @@
  nav {
    background-color: #f5c518;
    font-family: 'Bangers', cursive;
+   padding: 0rem 1rem !important;
  }
 
  nav a {
    color: black;
+ }
+
+ nav a:hover {
+   background-color: #876e11;
+   color: white;
  }
 
  h1 {
