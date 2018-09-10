@@ -76,6 +76,13 @@
   text-align: center;
 }
 
+.search-card {
+  font-size: 4vw;
+  min-width: 30%;
+  max-width: 30%;
+  text-align: center;
+}
+
 #navBrand {
   font-size: 4vw;
 
