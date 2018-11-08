@@ -48,7 +48,7 @@ and two join tables:
 
 The diagram below depicts the relationships :
 
-![Database Models](Hollywood/app/assets/images/DatabaseModels.jpg?raw=true)
+![Database Models](/app/assets/images/DatabaseModels.jpg?raw=true)
 
 ## APIs
 The movie, actor, and director information on Hollywood has been made available through the [TMDB](https://www.themoviedb.org/) API.
