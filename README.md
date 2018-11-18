@@ -3,6 +3,8 @@
 ## About
 Hollywood collections is a tool for making various collections/lists of all things Hollywood. you might wanna put your favourite actors, directors or movies in various collections depending on your movie preferences. Each item in your collection will then lead you to movies you like, the actors playing in such movies, or directors with a specific taste of movie making and so on. Get started [here:](https://hollywood-listmaker.herokuapp.com/)
 
+Hollywood was done as Project 1 (6 weeks in), in General Assembly's 12 week Web Dev Immersive full time program.
+
 ## How to find what you like
 Everything starts with adding your movie to the local database (original data generously provided by [TMDB](https://www.themoviedb.org/)):
 1. use the search box in the movies page and see if the movie you are looking for is on that list
